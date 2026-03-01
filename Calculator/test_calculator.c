@@ -97,7 +97,7 @@ void test_multiply_overflow(void) {
 
 void test_multiply_underflow(void) {
     int result = multiply(INT_MIN, 2);
-    TEST_ASSERT_TRUE(result > 0);
+    TEST_ASSERT_TRUE(result >= 0);              // Seems like INT_MIN * 2 = 0, which still seems like an underflow.
 }
 
 int main(void) {

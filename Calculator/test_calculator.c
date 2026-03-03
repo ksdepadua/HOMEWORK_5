@@ -100,6 +100,24 @@ void test_multiply_underflow(void) {
     TEST_ASSERT_TRUE(result >= 0);              // Seems like INT_MIN * 2 = 0, which still seems like an underflow.
 }
 
+/* DIVIDE TESTS */
+void test_divide_positive_numbers(void) {
+    TEST_ASSERT_EQUAL(4, divide(8, 2));       // Expect 8 / 2 = 4
+}
+
+void test_divide_positive_and_negative_numbers(void) {
+    TEST_ASSERT_EQUAL(-2, divide(6, -3));      // Expect 6 / -3 = -2
+}
+
+void test_divide_negative_numbers(void) {
+    TEST_ASSERT_EQUAL(3, divide(-12, -4));     // Expect -12 / -4 = 3
+}
+
+void test_divide_one(void) {
+    TEST_ASSERT_EQUAL(10, divide(10, 1));     // Expect 10 / 1 = 10
+    TEST_ASSERT_EQUAL(3, divide(3, 1));       // Expect 3 / 1 = 3
+}
+
 int main(void) {
     UNITY_BEGIN();
 
@@ -126,6 +144,12 @@ int main(void) {
     RUN_TEST(test_multiply_zero);
     RUN_TEST(test_multiply_overflow);
     RUN_TEST(test_multiply_underflow);
+
+    /* DIVIDE() TESTS */
+    RUN_TEST(test_divide_positive_numbers);
+    RUN_TEST(test_divide_positive_and_negative_numbers);
+    RUN_TEST(test_divide_negative_numbers);
+    RUN_TEST(test_divide_one);
     
     return UNITY_END();
 }

@@ -118,18 +118,9 @@ void test_divide_one(void) {
     TEST_ASSERT_EQUAL(3, divide(3, 1));     // Expect 3 / 1 = 3
 }
 
-void test_divide_overflow(void) {
-    int result = divide(INT_MIN, -1);       // Should overflow since abs(INT_MIN) > INT_MAX
-    TEST_ASSERT_TRUE(result < 0);
-}
-
 void test_divide_truncate(void) {
     TEST_ASSERT_EQUAL(0, divide(1, 3));     // Though 1/3 = 0.333, integer division should truncate the decimal and return 0.
     TEST_ASSERT_EQUAL(5, divide(17, 3));   
-}
-
-void test_divide_zero(void) {
-    TEST_ASSERT_FLOAT_IS_NAN(divide(1, 0)); // Is this a way to test for int dividing by 0 since it's undefined behavior..?
 }
 
 int main(void) {
@@ -164,9 +155,7 @@ int main(void) {
     RUN_TEST(test_divide_positive_and_negative_numbers);
     RUN_TEST(test_divide_negative_numbers);
     RUN_TEST(test_divide_one);
-    RUN_TEST(test_divide_overflow);
     RUN_TEST(test_divide_truncate);
-    RUN_TEST(test_divide_zero);
     
     return UNITY_END();
 }

@@ -43,6 +43,7 @@ void test_add_underflow(void) {
     int result = add(INT_MIN, -1);
     TEST_ASSERT_TRUE(result > 0);       // Checks if underflow occurred
 }
+/* END ADD() TESTS */
 
 /* SUBTRACT() TESTS */
 void test_subtract_positive_numbers(void) {
@@ -71,6 +72,7 @@ void test_subtract_underflow(void) {
     int result = subtract(INT_MIN, 1);          // INT_MIN - 1 should wrap around to the "top"
     TEST_ASSERT_TRUE(result > 0);
 }
+/* END SUBTRACT() TESTS */
 
 /* MULTIPLY() TESTS */
 void test_multiply_positive_numbers(void) {
@@ -99,8 +101,9 @@ void test_multiply_underflow(void) {
     int result = multiply(INT_MIN, 2);
     TEST_ASSERT_TRUE(result >= 0);              // Seems like INT_MIN * 2 = 0, which still seems like an underflow.
 }
+/* END MULTIPLY() TESTS */
 
-/* DIVIDE TESTS */
+/* DIVIDE() TESTS */
 void test_divide_positive_numbers(void) {
     TEST_ASSERT_EQUAL(4, divide(8, 2));       // Expect 8 / 2 = 4
 }
@@ -122,11 +125,13 @@ void test_divide_truncate(void) {
     TEST_ASSERT_EQUAL(0, divide(1, 3));     // Though 1/3 = 0.333, integer division should truncate the decimal and return 0.
     TEST_ASSERT_EQUAL(5, divide(17, 3));   
 }
+/* END DIVIDE() TESTS */
 
 int main(void) {
     UNITY_BEGIN();
 
     /* ADD() TESTS */
+    printf("\nADD() TESTS\n");
     RUN_TEST(test_add_positive_numbers); // Run our test function(s)
     RUN_TEST(test_add_positive_and_negative_numbers);
     RUN_TEST(test_add_negative_numbers);
@@ -135,6 +140,7 @@ int main(void) {
     RUN_TEST(test_add_underflow);
 
     /* SUBTRACT() TESTS */
+    printf("\nSUBTRACT() TESTS\n");
     RUN_TEST(test_subtract_positive_numbers);
     RUN_TEST(test_subtract_positive_and_negative_numbers);
     RUN_TEST(test_subtract_negative_numbers);
@@ -143,6 +149,7 @@ int main(void) {
     RUN_TEST(test_subtract_underflow);
 
     /* MULTIPLY() TESTS */
+    printf("\nMULTIPLY() TESTS\n");
     RUN_TEST(test_multiply_positive_numbers);
     RUN_TEST(test_multiply_positive_and_negative_numbers);
     RUN_TEST(test_multiply_negative_numbers);
@@ -151,6 +158,7 @@ int main(void) {
     RUN_TEST(test_multiply_underflow);
 
     /* DIVIDE() TESTS */
+    printf("\nDIVIDE() TESTS\n");
     RUN_TEST(test_divide_positive_numbers);
     RUN_TEST(test_divide_positive_and_negative_numbers);
     RUN_TEST(test_divide_negative_numbers);
